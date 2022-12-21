@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react';
 import React from "react";
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import "bootstrap/dist/css/bootstrap.min.css";
-import UserNavigationBar from './UserNavigationBar';
 
 const navItemsGuest = [
     {
@@ -21,45 +20,64 @@ const navItemsUser = [
     {
         display: 'Pagrindinis',
         to: '/home',
-        section: 'Home',
     },
     {
         display: 'Skrydžiai',
         to: '/airports',
-        section: 'Home',
     },
     {
-        display: 'Oro uostas',
-        to: '/airports',
-        section: 'Home',
+        display: 'Oro uosto administratoriaus sąsaja',
+        to: '/userinterface',
     }
 ]
 
-const navItemsAdmin = []
+const navItemsAdmin = [
+    {
+        display: 'Pagrindinis',
+        to: '/home',
+    },
+    {
+        display: 'Skrydžiai',
+        to: '/airports',
+    },
+    {
+        display: 'Administratoriaus sąsaja',
+        to: '/airports',
+    }
+]
 
 const NavigationBar = () => {
     const [rerender, setRerender] = useState(false)
-    const [user, setUser] = useState("guest");
+    const [user, setUser] = useState(localStorage.getItem("user"));
 
     let NavigationBarNavItems;
-    if(user.type==="admin"){
+
+    useEffect(()=>{
+        if(user==="admin"){
+            NavigationBarNavItems = navItemsAdmin;
+        }else if(user==="user"){
+            NavigationBarNavItems = navItemsUser;
+        }else{
+            NavigationBarNavItems = navItemsGuest;
+        }
+    },[user])
+
+    
+    useEffect(()=>{
+        if(window.localStorage.getItem("user"))  
+            setUser(window.localStorage.getItem("user"))
+    },[])
+
+    if(user==="admin"){
         NavigationBarNavItems = navItemsAdmin;
-    }else if(user.type==="user"){
+    }else if(user==="user"){
         NavigationBarNavItems = navItemsUser;
     }else{
         NavigationBarNavItems = navItemsGuest;
     }
-    
-    useEffect(()=>{
-        alert(user);
-
-            
-            setUser(window.localStorage.getItem("user"))
-        
-    },[])
 
     useEffect(()=>{
-
+        if(window.localStorage.getItem("user")) 
             setUser(window.localStorage.getItem("user"))
         
     },[rerender])
@@ -91,16 +109,20 @@ const NavigationBar = () => {
                 <>
                 <li className="nav-item" style={{position:'absolute', right:0, fontWeight:"bold", fontFamily: "Roboto"}}>
                 <Link className="nav-link" to='/login'>
-                Prisijungti{user.name}
+                Prisijungti
                 </Link></li></>
                 :
                 <>
                 <li className="nav-item" style={{position:'absolute', right:100, fontWeight:"bold", paddingTop:'8px', fontFamily:"Roboto"}}>
-                    Prisijungęs: <UserNavigationBar details = {user} />
+                    Prisijungęs: {user==="admin" ?
+                      "Administratorius" : localStorage.getItem("username")
+                    
+                }
                 </li>
                 <li className="nav-item" style={{position:'absolute', right:0, fontWeight:"bold"}}>
                 <Link className="btn button" to='/Home' style={{backgroundColor:"#c1eef3", fontFamily:"Roboto"}} onClick={()=>{
                 window.localStorage.setItem("user", "guest")
+                window.localStorage.setItem("username", "")
                 setRerender(!rerender)
                 }}>
                 Atsijungti

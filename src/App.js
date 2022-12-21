@@ -12,6 +12,8 @@ import Login from "./components/Login"
 import AirportsList from "./components/Airports/AirportsList"
 import AirlinesList from "./components/Airlines/AirlinesList"
 import FlightsList from "./components/Flights/FlightsList"
+import UserInterface from "./components/User/Interface"
+import AddAirport from "./components/Airports/AddAirport"
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
                 <Route path="/airports" element={<AirportsList/>} />
                 <Route path="/airlines" element={<AirlinesList/>} />
                 <Route path="/flights" element={<FlightsList/>} />
+                <Route path="/userinterface" element={<UserInterface/>} />
+                <Route path="/addairport" element={<AddAirport/>} />
               </Route>
           </Routes>
         </div>

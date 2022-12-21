@@ -49,15 +49,15 @@ export default function AirportsList(){
         
         <p style={{fontSize:"25px", textAlign:'center', fontFamily:'Roboto', color:"#4b7377", fontWeight:"bold", padding:'50px'}}>Oro uostų sąrašas</p>
         <p style={{fontSize:"17px", textAlign:'center', fontFamily:'Roboto', color:"#4b7377", fontWeight:"bold"}}>Pasirinkite oro uostą</p>
-        <div className="box" style={{marginTop: '15px', fontFamily:'Roboto'}}>
+        <div className="box justify-content-center" style={{marginTop: '15px', fontFamily:'Roboto'}}>
           <ul className="list-group list-group-horizontal justify-content-center" style={{fontWeight:"bold"}}>
-            <li className="list-group-item" style={{width: '20%', color:"#4b7377", backgroundColor: '#c1eef3'}}>Miestas</li>
+            <li className="list-group-item" style={{width: '20%', color:"#4b7377", backgroundColor: '#c1eef3'}}>Vietovė</li>
             <li className="list-group-item" style={{width: '40%', color:"#4b7377", backgroundColor: '#c1eef3'}}>Pavadinimas</li>
           </ul>
           
             {airports &&
               airports.map((airport, index) => (<>
-              <ul className="list-group list-group-horizontal justify-content-center">
+              <ul className="list-group list-group-horizontal justify-content-center" style={{fontFamily: 'Roboto'}}>
                 <li className="list-group-item" style={{width: '20%'}}>{airport.location}</li>
                 <li className="list-group-item select" style={{width: '40%'}} type="button" key={index}
                 onClick={() => handleSelect(airport.id, airport.name)}>

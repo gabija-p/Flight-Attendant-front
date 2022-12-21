@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from "react"
 import UserService from "../services/UserService"
+import axios from 'axios';
 import jwt_decode from "jwt-decode";
 import '../App.css'
 
@@ -8,16 +9,22 @@ export default function Login(){
     const [username,setUsername]=useState("");
     const [password,setPassword] = useState("");
     const [user, setUser] = useState("guest");
-    const [loggedIn,setLoggedIn] = useState(false);
-    const [wrongPassword,setWrongPassword] = useState(false)
-    const [invalidEmail,setInvalidEmail] = useState(false)
+    const [unsuccessful,setUnsuccessful] = useState(false)
 
     useEffect(()=>{
-      if(user === "user")
-        localStorage.setItem("user", "user")
+      if(user != "guest") {
+        if(user === "user")
+        {
+          localStorage.setItem("user", "user")
+          localStorage.setItem("username", username)
+        }
+        
       if(user === "admin")
         localStorage.setItem("user", "admin")
-    },[user])
+      window.location.href="/home";
+      }
+
+      },[user])
 
     const data = {
       username: username,
@@ -26,13 +33,19 @@ export default function Login(){
     
     function handleFormSubmit(e){
       e.preventDefault();
-
-      let found=false      
-        if(!found){
-          UserService.login(data)
-          .then(response => {
-            //get token from response
-})}}
+      UserService.login(data)
+      .then(response => {
+        const token  =  response.data.accessToken;
+        var decoded = jwt_decode(token);
+        localStorage.setItem("token", token);
+        localStorage.setItem("userId", decoded.sub);
+        if(decoded.role === "AttendantUser"){
+          setUser("user")}
+        else{setUser("admin")}})
+      .catch((e) => {
+        setUnsuccessful(true);
+      });
+        }
     return (<>
     <head>
         <link rel="preconnect" href="https://fonts.googleapis.com"></link>
@@ -44,10 +57,10 @@ export default function Login(){
         </style>
     </head>
     <div className="d-flex justify-content-center">
-      <div className="box">
+      <div className="box" style={{width: "40%"}}>
         <header className="header pt-2 mb-5 d-flex justify-content-center" style={{fontFamily:'Roboto', fontWeight:"bold", fontSize:"25px", color:"#4b7377", opacity:60}}>Prisijungimas</header>
         <div className="col-12 my-5 container d-flex justify-content-center">
-          <form >
+          <form style={{width: '60%'}}>
             <div className="form-group">
               <label htmlFor="username" style={{fontFamily:'Roboto', padding:'10px'}}>Vartotojo vardas</label>
               <input
@@ -55,7 +68,7 @@ export default function Login(){
                 className="form-control"
                 value={username}
                 onChange={e=>setUsername(e.target.value)}
-                id="email"
+                id="username"
               />
             </div>
             <div className="form-group">
@@ -68,13 +81,13 @@ export default function Login(){
                 id="password"
               />
             </div>
-            {(wrongPassword || invalidEmail) && 
-                  <div className="alert alert-danger">{wrongPassword?"Neteisingas Slaptažodis":"Toks vartotojas neregistruotas"}</div>
+            {(unsuccessful) && 
+                  <div className="alert alert-danger" style={{fontFamily: 'Roboto', padding: '10px!important'}}>{"Vartotojo vardas arba slaptažodis neteisingas"}</div>
                   }
-            <div style={{fontFamily:'Roboto', padding:'10px'}}><a href="/register">Kurti naują paskyrą</a> <a className="text-end">Pamiršau slaptažodį</a></div>
             <div className="form-footer d-flex justify-content-center">
               <div className="validation-message"></div>
-              <input type="submit" className="btn btn-light" style={{fontFamily:'Roboto', padding:'10px', background:'#c1eef3', color:"#4b7377", fontWeight:"bold"}} value="Prisijungti" onClick={handleFormSubmit}/>
+              <input type="submit" className="btn btn-light" style={{fontFamily:'Roboto', padding:'10px', background:'#c1eef3', color:"#4b7377", fontWeight:"bold", width:"50%", marginTop: "10%"}} value="Prisijungti" onClick={handleFormSubmit}/>
+              <input type="submit" className="btn btn-light" style={{fontFamily:'Roboto', padding:'10px', background:'#c1eef3', color:"#4b7377", fontWeight:"bold", width:"50%", marginTop: "10%"}} value="Pamiršau slaptažodį"/>
             </div>
           </form>
 

@@ -1,5 +1,4 @@
 import {Outlet} from "react-router-dom"
-
 import NavigationBar from "./NavigationBar.jsx"
 import "bootstrap/dist/css/bootstrap.min.css";
 
