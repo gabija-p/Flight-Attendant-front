@@ -50,11 +50,10 @@ export default function AirlinesList(){
           @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
         </style>
     </head>
-        
-        <p style={{fontSize:"25px", textAlign:'center', fontFamily:'Roboto', color:"#4b7377", fontWeight:"bold", padding:'50px', paddingBottom: 0}}>{airport}</p>
+    <div className="box" style={{marginTop: '15px', fontFamily:'Roboto'}}>
+        <p style={{fontSize:"25px", textAlign:'center', fontFamily:'Roboto', color:"#4b7377", fontWeight:"bold", padding:'50px', paddingBottom: 0, paddingTop: 0}}>{airport}</p>
         <p style={{fontSize:"23px", textAlign:'center', fontFamily:'Roboto', color:"#4b7377", fontWeight:"bold"}}>oro linijų sąrašas</p>
         <p style={{fontSize:"17px", textAlign:'center', fontFamily:'Roboto', color:"#4b7377", fontWeight:"bold"}}>Pasirinkite oro liniją</p>
-        <div className="box" style={{marginTop: '15px', fontFamily:'Roboto'}}>
           <ul className="list-group list-group-horizontal justify-content-center" style={{fontWeight:"bold"}}>
             <li className="list-group-item" style={{width: '40%', color:"#4b7377", backgroundColor: '#c1eef3'}}>Pavadinimas</li>
           </ul>

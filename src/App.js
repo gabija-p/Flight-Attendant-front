@@ -14,10 +14,16 @@ import AirlinesList from "./components/Airlines/AirlinesList"
 import FlightsList from "./components/Flights/FlightsList"
 import UserInterface from "./components/User/Interface"
 import AddAirport from "./components/Airports/AddAirport"
+import EditAirport from "./components/Airports/EditAirport"
+import AddAirline from "./components/Airlines/AddAirline"
+import EditAirline from "./components/Airlines/EditAirline"
+import AddFlight from "./components/Flights/AddFlight"
+import Register from "./components/User/Register"
+import EditFlight from "./components/Flights/EditFlight"
 
 function App() {
   return (
-    <div className="App">
+    <div className="App" style={{minHeight: '100vh', display: 'flex', flexDirection: 'column'}}>
       <Header/>
       <div className="container-fluid">
         <div className="row">
@@ -31,6 +37,12 @@ function App() {
                 <Route path="/flights" element={<FlightsList/>} />
                 <Route path="/userinterface" element={<UserInterface/>} />
                 <Route path="/addairport" element={<AddAirport/>} />
+                <Route path="/editairport" element={<EditAirport/>} />
+                <Route path="/addairline" element={<AddAirline/>} />
+                <Route path="/editairline" element={<EditAirline/>} />
+                <Route path="/addflight" element={<AddFlight/>} />
+                <Route path="/register" element={<Register/>} />
+                <Route path="/editflight" element={<EditFlight/>} />
               </Route>
           </Routes>
         </div>

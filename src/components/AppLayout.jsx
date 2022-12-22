@@ -9,7 +9,7 @@ export default function AppLayout(){
         <NavigationBar/>
     </div>
 
-    <div>
+    <div >
         <Outlet/>
     </div>    
     </>

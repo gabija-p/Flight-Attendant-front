@@ -13,13 +13,16 @@ export default function Footer() {
         </style>
     </head>
     <footer
-      className="container-fluid text-light py-3 ps-0"
+      className="container-fluid text-light py-3 ps-0 fixed-bottom"
       style={{
         height: 50,
-        position: 'absolute',
+        position: 'fixed',
         bottom: 0,
+        left: 0,
+        right: 0,
         backgroundColor: '#2c2c2c',
         boxShadow: '0px -20px 40px rgba(0, 0, 0, 0.35)',
+        marginTop: 'auto'
       }}
     >
       <span style={{fontFamily:"Roboto"}}>KTU, 2022</span>

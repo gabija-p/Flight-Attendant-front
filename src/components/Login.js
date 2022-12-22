@@ -87,7 +87,6 @@ export default function Login(){
             <div className="form-footer d-flex justify-content-center">
               <div className="validation-message"></div>
               <input type="submit" className="btn btn-light" style={{fontFamily:'Roboto', padding:'10px', background:'#c1eef3', color:"#4b7377", fontWeight:"bold", width:"50%", marginTop: "10%"}} value="Prisijungti" onClick={handleFormSubmit}/>
-              <input type="submit" className="btn btn-light" style={{fontFamily:'Roboto', padding:'10px', background:'#c1eef3', color:"#4b7377", fontWeight:"bold", width:"50%", marginTop: "10%"}} value="Pamiršau slaptažodį"/>
             </div>
           </form>
 

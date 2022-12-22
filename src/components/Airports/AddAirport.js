@@ -1,13 +1,11 @@
 import React,{useState,useEffect} from "react"
 import AirportService from "../../services/AirportService"
-import axios from "axios";
 import '../../App.css'
 
 
-export default function Login(){
+export default function AddAirport(){
     const [Name,setName]=useState("");
     const [Location,setLocation] = useState("");
-    const [user, setUser] = useState("guest");
 
     const data = {
       name: Name,
@@ -18,10 +16,7 @@ export default function Login(){
       e.preventDefault();
       AirportService.create(data)
       .then(response => {
-        alert(response.status)})
-      .catch((e) => {
-        alert(axios.defaults.headers.common["Authorization"])
-      });
+        window.location.href="/userinterface"})
         }
     return (<>
     <head>

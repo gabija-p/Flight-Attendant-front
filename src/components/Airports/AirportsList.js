@@ -46,10 +46,9 @@ export default function AirportsList(){
           @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
         </style>
     </head>
-        
-        <p style={{fontSize:"25px", textAlign:'center', fontFamily:'Roboto', color:"#4b7377", fontWeight:"bold", padding:'50px'}}>Oro uostų sąrašas</p>
+    <div className="box justify-content-center" style={{marginTop: '15px', fontFamily:'Roboto'}}>
+        <p style={{fontSize:"25px", textAlign:'center', fontFamily:'Roboto', color:"#4b7377", fontWeight:"bold", padding:'50px', paddingTop: 0, paddingBottom: 0}}>Oro uostų sąrašas</p>
         <p style={{fontSize:"17px", textAlign:'center', fontFamily:'Roboto', color:"#4b7377", fontWeight:"bold"}}>Pasirinkite oro uostą</p>
-        <div className="box justify-content-center" style={{marginTop: '15px', fontFamily:'Roboto'}}>
           <ul className="list-group list-group-horizontal justify-content-center" style={{fontWeight:"bold"}}>
             <li className="list-group-item" style={{width: '20%', color:"#4b7377", backgroundColor: '#c1eef3'}}>Vietovė</li>
             <li className="list-group-item" style={{width: '40%', color:"#4b7377", backgroundColor: '#c1eef3'}}>Pavadinimas</li>

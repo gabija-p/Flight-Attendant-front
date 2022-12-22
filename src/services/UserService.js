@@ -11,8 +11,15 @@ const login = (data) => {
   
 };
 
+const register = (data) => {
+
+  return axios.post('https://stingray-app-7vbzf.ondigitalocean.app/api/register', data)
+  
+};
+
 const UserService = {
-  login
+  login,
+  register
 };
 
 export default UserService;

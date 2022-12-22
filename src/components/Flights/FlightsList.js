@@ -41,15 +41,14 @@ export default function FlightsList(){
           @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
         </style>
     </head>
-        
-        <p style={{fontSize:"25px", textAlign:'center', fontFamily:'Roboto', color:"#4b7377", fontWeight:"bold", padding:'50px', paddingBottom: 0}}>{airport}</p>
+    <div className="box" style={{marginTop: '15px', fontFamily:'Roboto'}}>
+        <p style={{fontSize:"25px", textAlign:'center', fontFamily:'Roboto', color:"#4b7377", fontWeight:"bold", padding:'50px', paddingBottom: 0, paddingTop: 0}}>{airport}</p>
         <p style={{fontSize:"23px", textAlign:'center', fontFamily:'Roboto', color:"#4b7377", fontWeight:"bold"}}>{airline} oro linijos skrydžiai</p>
-        <div className="box" style={{marginTop: '15px', fontFamily:'Roboto'}}>
           <ul className="list-group list-group-horizontal justify-content-center" style={{fontWeight:"bold"}}>
             <li className="list-group-item" style={{width: '30%', color:"#4b7377", backgroundColor: '#c1eef3'}}>Kryptis</li>
             <li className="list-group-item" style={{width: '25%', color:"#4b7377", backgroundColor: '#c1eef3'}}>Laikas</li>
             <li className="list-group-item" style={{width: '20%', color:"#4b7377", backgroundColor: '#c1eef3'}}>Vartai</li>
-            <li className="list-group-item" style={{width: '20%', color:"#4b7377", backgroundColor: '#c1eef3'}}>Kaina</li>
+            <li className="list-group-item" style={{width: '20%', color:"#4b7377", backgroundColor: '#c1eef3'}}>Bilieto kaina</li>
             <li className="list-group-item" style={{width: '20%', color:"#4b7377", backgroundColor: '#c1eef3'}}>Vietų skaičius</li>
           </ul>
           

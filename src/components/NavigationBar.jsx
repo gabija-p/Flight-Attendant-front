@@ -41,8 +41,8 @@ const navItemsAdmin = [
         to: '/airports',
     },
     {
-        display: 'Administratoriaus sąsaja',
-        to: '/airports',
+        display: 'Naujas vartotojas',
+        to: '/register',
     }
 ]
 
