@@ -34,7 +34,6 @@ export default function AirportsList(){
       
       retrieveAirports();
       setAirportIdSelected(localStorage.getItem("airportidselected"))
-      setSelectionAirport(localStorage.getItem("airlineselection"));
       setAirport(localStorage.getItem("airportname"))
       
     }, []);
